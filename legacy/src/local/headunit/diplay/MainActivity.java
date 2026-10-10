@@ -14,6 +14,7 @@ public class MainActivity extends Activity {
   status=new TextView(this);status.setTextSize(16);status.setTextColor(0xffe2e8f0);status.setPadding(0,dp(18),0,dp(12));status.setText("等待 iPhone 插入\n旧车机每次开机首次连接需确认 VPN；USB 授权请选择 DiPlay。\n连接后按返回键显示或收起面板。");root.addView(status);
   operationStatus=new TextView(this);operationStatus.setTextSize(14);operationStatus.setTextColor(0xff7dd3fc);operationStatus.setPadding(0,0,0,dp(8));operationStatus.setVisibility(View.GONE);root.addView(operationStatus);
   button(root,"在线更新",new Runnable(){public void run(){OnlineUpdate.check(MainActivity.this);}});
+  button(root,"回退到0.34有线稳定版",new Runnable(){public void run(){OnlineUpdate.rollback(MainActivity.this);}});
   button(root,"提交日志",new Runnable(){public void run(){upload();}});
   button(root,"连接",new Runnable(){public void run(){AutoUsbService.resume(MainActivity.this);connectPending=true;scheduleConnection(0);}});
   button(root,"停止",new Runnable(){public void run(){stopConnection();}});

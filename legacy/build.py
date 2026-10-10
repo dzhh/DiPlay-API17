@@ -6,7 +6,7 @@ TC=Path(os.environ.get('DIPLAY_TOOLCHAIN', str(ROOT.parent/'toolchain'))).resolv
 JAVA=Path(os.environ['JAVA_HOME'])/'bin/java.exe' if os.environ.get('JAVA_HOME') else next((TC/'jdk21').glob('*/bin/java.exe'))
 BUILD=ROOT/'build'; BUILD.mkdir(exist_ok=True)
 def run(cmd, name):
-    native=name in ('aapt','align')
+    native=name in ('aapt','align','stable-aapt','stable-align')
     argv=[os.path.relpath(x,ROOT) if native and isinstance(x,Path) else str(x) for x in cmd]
     argv[0]=str(cmd[0])
     p=subprocess.run(argv,capture_output=True,cwd=ROOT if native else None)
