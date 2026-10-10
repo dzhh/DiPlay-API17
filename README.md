@@ -1,6 +1,6 @@
 # DiPlay API17 — 比亚迪宋 DM 有线 CarPlay 实验移植
 
-基于 [shihabal3amri/DiPlay](https://github.com/shihabal3amri/DiPlay) 的 Android 4.2.2 / ARMv7 有线 CarPlay 移植，针对一台老款比亚迪车机做兼容性调整。当前源码版本：**0.33.0-api17**。
+基于 [shihabal3amri/DiPlay](https://github.com/shihabal3amri/DiPlay) 的 Android 4.2.2 / ARMv7 有线 CarPlay 移植，针对一台老款比亚迪车机做兼容性调整。当前源码版本：**0.34.0-api17**。
 
 **只在下述一套真实车辆和手机组合上测试过，没有在其他车型、车机、手机或 iOS 版本上测试过。不代表通用兼容，也不保证安装后即可连接。** 本仓库不是 Apple 或比亚迪官方产品，没有宣称 MFi/CarPlay 认证。
 
@@ -23,7 +23,7 @@
 | 手机 | iPhone 15 Pro Max |
 | 手机系统 | iOS 26.2.1 |
 | 连接方式 | USB 有线 |
-| 显示策略 | 默认固定 15 fps；800×480 视频按比例显示 |
+| 显示策略 | 默认固定 15 fps；0.34 改为 1024×600 视频（新分辨率待实车验证） |
 
 设备信息来自该车检测结果及车主反馈。未取得可公开验证的完整原厂固件包，不按这些字段推断其他固件兼容。
 
