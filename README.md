@@ -1,6 +1,6 @@
 # DiPlay API17 — 比亚迪宋 DM 有线 CarPlay 实验移植
 
-基于 [shihabal3amri/DiPlay](https://github.com/shihabal3amri/DiPlay) 的 Android 4.2.2 / ARMv7 有线 CarPlay 移植，针对一台老款比亚迪车机做兼容性调整。当前开发源码版本：**0.35.0-api17**；已实车确认的有线稳定基线：**0.34.0-api17**。
+基于 [shihabal3amri/DiPlay](https://github.com/shihabal3amri/DiPlay) 的 Android 4.2.2 / ARMv7 有线 CarPlay 移植，针对一台老款比亚迪车机做兼容性调整。当前开发源码版本：**0.36.0-api17**；已实车确认的有线稳定基线：**0.34.0-api17**。
 
 **只在下述一套真实车辆和手机组合上测试过，没有在其他车型、车机、手机或 iOS 版本上测试过。不代表通用兼容，也不保证安装后即可连接。** 本仓库不是 Apple 或比亚迪官方产品，没有宣称 MFi/CarPlay 认证。
 
@@ -43,7 +43,7 @@
 
 ## 有线稳定版与实验版切换
 
-**0.34 已由车主确认有线使用正常，作为冻结稳定基线保留。** 源码分支：[stable/wired-0.34](https://github.com/hange3514/DiPlay-API17/tree/stable/wired-0.34)。后续蓝牙/无线实验在开发版本推进，不覆盖稳定基线。0.35 先增加回退通道，尚未启用无线 CarPlay。
+**0.34 已由车主确认有线使用正常，作为冻结稳定基线保留。** 源码分支：[stable/wired-0.34](https://github.com/hange3514/DiPlay-API17/tree/stable/wired-0.34)。后续蓝牙/无线实验在开发版本推进，不覆盖稳定基线。0.35 增加回退通道；0.36 在「环境检测并提交」中增加无线专项信息，尚未启用无线 CarPlay。调查结论与测试步骤见 [无线可行性说明](docs/WIRELESS_FEASIBILITY.md)。
 
 - 现有 0.34：点「在线更新」可安装 0.35 及后续实验版。
 - 0.35 及后续实验版：停止连接后点 **「回退到0.34有线稳定版」**，下载校验后在系统安装器中确认安装；无需卸载。
