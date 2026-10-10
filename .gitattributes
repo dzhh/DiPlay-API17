@@ -1,0 +1,6 @@
+* text=auto
+*.py text eol=lf
+*.md text eol=lf
+*.kt text eol=lf
+*.java text eol=lf
+*.png binary

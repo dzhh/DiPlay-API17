@@ -1,0 +1,16 @@
+package local.headunit.diplay
+import org.junit.Assert.*
+import org.junit.Test
+class AutoConnectPolicyTest {
+ @Test fun noPhoneDoesNotLaunch(){val p=AutoConnectPolicy();for(n in 0L..10000L step 1000)assertFalse(p.poll(n,false,false))}
+ @Test fun attachDebouncedAndLaunchDeduplicated(){val p=AutoConnectPolicy();assertFalse(p.poll(0,true,false));assertTrue(p.poll(800,true,false));assertFalse(p.poll(900,true,false));assertFalse(p.poll(5000,true,true));assertFalse(p.poll(9000,true,true))}
+ @Test fun failureWaitsBeforeRetry(){val p=AutoConnectPolicy();p.poll(0,true,false);p.poll(800,true,false);p.poll(900,true,true);assertFalse(p.poll(1000,true,false));assertFalse(p.poll(3999,true,false));assertTrue(p.poll(4000,true,false))}
+ @Test fun stopWaitsForActualUnplug(){val p=AutoConnectPolicy();p.poll(0,true,false);p.pause();assertFalse(p.poll(800,true,false));p.poll(1000,false,false);assertFalse(p.poll(2000,true,false));p.poll(3000,false,false);p.poll(5001,false,false);assertFalse(p.poll(6000,true,false));assertTrue(p.poll(6800,true,false))}
+ @Test fun activeReenumerationDoesNotRearmPause(){val p=AutoConnectPolicy();p.poll(0,true,true);p.pause();p.poll(1000,false,true);p.poll(10000,false,true);assertFalse(p.poll(10001,true,true));assertFalse(p.poll(20000,true,false));assertFalse(p.poll(60000,true,false))}
+ @Test fun manualResumeOverridesPause(){val p=AutoConnectPolicy();p.poll(0,true,false);p.pause();p.manualResume();assertTrue(p.poll(800,true,false))}
+ @Test fun abandonedLaunchIsNotAnImmediateLoop(){val p=AutoConnectPolicy();p.poll(0,true,false);assertTrue(p.poll(800,true,false));assertFalse(p.poll(120800,true,false));assertFalse(p.poll(123799,true,false));assertTrue(p.poll(123800,true,false))}
+ @Test fun successfulConnectionResetsRetryDelay(){val p=AutoConnectPolicy();p.poll(0,true,false);p.launchFailed(1000);p.launchFailed(5000);p.ready();p.poll(10000,true,true);assertFalse(p.poll(11000,true,false));assertTrue(p.poll(14000,true,false))}
+ @Test fun duplicateFailureDoesNotDoubleBackoff(){val p=AutoConnectPolicy();p.poll(0,true,false);p.poll(800,true,false);p.poll(900,true,true);assertFalse(p.poll(1000,true,false));p.launchFailed(1100);assertTrue(p.poll(4000,true,false))}
+ @Test fun debounceDeadlineDoesNotWaitForAnotherTwoSecondScan(){val p=AutoConnectPolicy();assertFalse(p.poll(200,true,false));assertEquals(800,p.nextPollDelay(200,true,false));assertTrue(p.poll(1000,true,false));assertEquals(2000,p.nextPollDelay(1000,true,false))}
+ @Test fun backoffUsesRemainingDelayButIdleAndPausedStayLowFrequency(){val p=AutoConnectPolicy();p.poll(0,true,false);p.poll(800,true,false);p.poll(900,true,true);p.poll(1000,true,false);assertEquals(2000,p.nextPollDelay(1000,true,false));assertFalse(p.poll(3000,true,false));assertEquals(1000,p.nextPollDelay(3000,true,false));assertTrue(p.poll(4000,true,false));p.pause();assertEquals(2000,p.nextPollDelay(4000,true,false));assertEquals(2000,p.nextPollDelay(4000,false,false));assertEquals(2000,p.nextPollDelay(4000,true,true))}
+}

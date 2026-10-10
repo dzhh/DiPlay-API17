@@ -1,0 +1,16 @@
+toolchain/
+legacy/build/
+legacy/dist/
+legacy/assets/server.txt
+legacy/assets/token.txt
+legacy/assets/offline-mfi/
+*.jks
+*.keystore
+*.pk8
+*.p7b
+*.apk
+*.log
+__pycache__/
+.env
+.env.*
+local.properties
