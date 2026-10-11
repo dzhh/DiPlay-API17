@@ -1,8 +1,10 @@
-# DiPlay API17 — 比亚迪宋 DM 有线 CarPlay 实验移植
+# DiPlay API17 — 比亚迪车机有线 CarPlay（个人维护 fork）
 
 基于 [shihabal3amri/DiPlay](https://github.com/shihabal3amri/DiPlay) 的 Android 4.2.2 / ARMv7 有线 CarPlay 移植，针对一台老款比亚迪车机做兼容性调整。当前推荐使用 **0.34 有线稳定版**。2026-10-11 已停止无线及后续双向音频实验，私人在线通道仅提供 0.34 稳定功能。公开精简版为 **0.34.1-public**（从 0.34 派生，移除私人在线功能）；原始稳定源码见 [stable/wired-0.34](https://github.com/hange3514/DiPlay-API17/tree/stable/wired-0.34)。
 
-**只在下述一套真实车辆和手机组合上测试过，没有在其他车型、车机、手机或 iOS 版本上测试过。不代表通用兼容，也不保证安装后即可连接。** 本仓库不是 Apple 或比亚迪官方产品，没有宣称 MFi/CarPlay 认证。
+> **个人 fork 说明（2026-10-11）：** 多 iPhone 有线切换修复位于本仓库的 [fix/multi-iphone-pairing-0.37 分支](https://github.com/dzhh/DiPlay-API17/tree/fix/multi-iphone-pairing-0.37)，向上游提交的 [PR #1](https://github.com/hange3514/DiPlay-API17/pull/1) 目前仍未合并。因此，本仓库 `main` 和公开的 `0.34.1-public` APK 暂不包含这项修复。
+
+**0.34 稳定版仅在下述一套真实车辆和手机组合上测试过；0.37 多 iPhone 改动的独立实测见下文。所有结果只适用于对应源码版本和设备组合，不代表通用兼容或安装后必然连接。** 本仓库不是 Apple 或比亚迪官方产品，没有宣称 MFi/CarPlay 认证。
 
 公开 APK 的对应源码以 [v0.34.1-public 标签](https://github.com/hange3514/DiPlay-API17/tree/v0.34.1-public) 和 Release 附件为准。`main` 保留历史调查代码，构建公开精简版请切换该标签，不要直接编译 `main`。
 
@@ -13,7 +15,7 @@
 - 本仓库是抽取所需协议代码后单独维护的移植源码，不是完整上游镜像；原有包名与版权声明保留。移植新增及修改代码同样按 **GPL-3.0** 发布，详见 [LICENSE](LICENSE)。第三方组件保留各自许可证，见 [NOTICE.md](NOTICE.md)。
 - CarPlay 图标来自上游 `common/src/main/res/drawable/ic_carplay.png`。CarPlay、Siri、iPhone 等名称及相关标识属于各自权利人；使用名称说明兼容目标，不代表官方授权或背书。
 
-## 唯一实测组合
+## 0.34 有线稳定版实测组合
 
 | 项目 | 实测环境 |
 | --- | --- |
@@ -28,6 +30,16 @@
 | 显示策略 | 1024×600 / 固定 15 fps；0.34 已由车主实车验证可用（2026-10-10） |
 
 设备信息来自该车检测结果及车主反馈。未取得可公开验证的完整原厂固件包，不按这些字段推断其他固件兼容。
+
+## 我的 0.37 多 iPhone 有线切换实测（个人分支）
+
+0.37 代码位于上述个人分支。以下是车主在该分支上的实车测试，不代表当前 `main` 或公开 APK 已包含该功能。
+
+| 车辆与车机 | 手机与系统 | 连接与结果 |
+| --- | --- | --- |
+| 比亚迪 S7，2017 款；Android 4.2.2 / API 17 | iPhone 14 Pro / iOS 27.0.0；iPhone 15 Pro Max / iOS 27.0.1 | USB 有线；两部手机先后切换并连接成功（2026-10-11） |
+
+这验证的是依次切换连接，不表示两部手机可同时连接；无线连接未验证。
 
 ## 已做的主要更改
 
