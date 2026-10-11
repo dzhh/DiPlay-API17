@@ -1,4 +1,4 @@
-# DiPlay API17 — 比亚迪车机有线 CarPlay（个人维护 fork）
+# DiPlay API17 — 比亚迪 S7（2017 款）有线 CarPlay（个人维护 fork）
 
 基于 [shihabal3amri/DiPlay](https://github.com/shihabal3amri/DiPlay) 的 Android 4.2.2 / ARMv7 有线 CarPlay 移植，针对一台老款比亚迪车机做兼容性调整。当前推荐使用 **0.34 有线稳定版**。2026-10-11 已停止无线及后续双向音频实验，私人在线通道仅提供 0.34 稳定功能。公开精简版为 **0.34.1-public**（从 0.34 派生，移除私人在线功能）；原始稳定源码见 [stable/wired-0.34](https://github.com/hange3514/DiPlay-API17/tree/stable/wired-0.34)。
 
