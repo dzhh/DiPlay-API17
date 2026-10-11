@@ -30,4 +30,6 @@ python legacy/test_protocols.py
 
 APK 输出为 `legacy/dist/DiPlay_API17_Wired.apk`。构建过程包括 JNI、Kotlin/Java、R8、aapt、zipalign、签名及 API17 签名验证。`legacy/build/` 包含构建日志。
 
-缺少身份材料仍可构建源码，但不能完成真实附件认证。见 CONFIGURATION.md。发布自己的 APK 前应检查 ZIP 资产与配置，使用自己的签名并提供匹配源码；不得发布本地配对记录或私人身份材料。
+发布的 APK 已带上游实验性身份；源码默认不带，按 AUTH_PROVENANCE.md 准备两份固定摘要的运行资产即可复现功能。缺少材料的自行构建不能完成附件认证。发布自己的 APK 前应检查 ZIP 资产与配置，使用自己的签名并提供匹配源码；不得发布本地配对记录或私人身份材料。
+
+公开精简版本测试：`python legacy/test_protocols.py`。`test_projection_ui.py` 需设置 `DIPLAY_TEST_WORKSPACE` 指向自备 API17 模拟器工具目录、`DIPLAY_TEST_SERIAL` 指定脚本允许的专用模拟器；测试脚本不用于真实车机。

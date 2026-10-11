@@ -1,9 +1,8 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="local.headunit.diplay" android:versionCode="34" android:versionName="0.34.0-api17">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="local.headunit.diplay" android:versionCode="41" android:versionName="0.34.1-public">
  <uses-sdk android:minSdkVersion="17" android:targetSdkVersion="17"/>
  <uses-permission android:name="android.permission.INTERNET"/>
  <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
  <uses-permission android:name="android.permission.RECORD_AUDIO"/>
- <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
  <uses-feature android:name="android.hardware.usb.host" android:required="false"/>
  <uses-feature android:name="android.hardware.microphone" android:required="false"/>
  <application android:icon="@drawable/ic_carplay" android:label="DiPlay有线移植" android:theme="@android:style/Theme.Holo.Light.NoActionBar" android:allowBackup="false">

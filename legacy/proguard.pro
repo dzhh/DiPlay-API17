@@ -36,11 +36,6 @@
 
 -keep interface local.headunit.diplay.MainActivity$Work { *; }
 
--keep class local.headunit.diplay.ReportIo { *; }
--keep class local.headunit.diplay.EnvironmentCheck { *; }
--keep class local.headunit.diplay.NetworkDeadline { *; }
--keep class local.headunit.diplay.UpdateFiles { *; }
--keep class local.headunit.diplay.OnlineUpdate { *; }
 -keep interface kotlin.jvm.functions.Function0 { *; }
 -keep class local.headunit.diplay.VerifiedMfiCache { public *; }
 -keep class com.shilapi.xcertplay.mfi.LocalMfiAuthenticationClient { public *; }
@@ -54,7 +49,6 @@
 
 -keep class local.headunit.diplay.AudioRouting { public *; }
 
--keep class local.headunit.diplay.WheelProbe { *; }
 -keepclassmembers class local.headunit.diplay.PlaybackFocus { private android.media.AudioManager$OnAudioFocusChangeListener sessionListener; }
 
 -keep class local.headunit.diplay.WheelControl { *; }
